@@ -1,6 +1,7 @@
 namespace Music_Player_App
 {
     using System.Globalization;
+    using System.Windows.Threading;
     using FontAwesome.Sharp;
     using NAudio.Wave;
     public partial class FormMainWindow : Form
@@ -68,11 +69,11 @@ namespace Music_Player_App
             {
                 IconAddToList_Click();
             }
-            else if(Form.ModifierKeys == Keys.F && keyData == Keys.R)
+            else if (Form.ModifierKeys == Keys.F && keyData == Keys.R)
             {
                 IconFavRem_Click();
             }
-            else if(Form.ModifierKeys == Keys.L && keyData == Keys.R)
+            else if (Form.ModifierKeys == Keys.L && keyData == Keys.R)
             {
                 IconListRemove_Click();
             }
@@ -410,7 +411,7 @@ namespace Music_Player_App
         private void PanelMove_MouseDown(object sender, MouseEventArgs e)
         {
             moved = true;
-            x = e.X;
+            x = e.X + 250;
             y = e.Y;
         }
 
@@ -443,8 +444,6 @@ namespace Music_Player_App
                         player.Open(new Uri(item.path.ToString()));
                         player.Play();
                         full = (Convert.ToInt32(fulltime.Days.ToString()) * 24 * 60 * 60) + (Convert.ToInt32(fulltime.Hours.ToString()) * 60 * 60) + (Convert.ToInt32(fulltime.Minutes.ToString()) * 60) + (Convert.ToInt32(fulltime.Seconds.ToString()));
-                        progress = Convert.ToInt32(750 / full);
-                        PanelFor.Width = 0;
                     }
                 }
             }
@@ -750,7 +749,6 @@ namespace Music_Player_App
 
         private void ASD(int prog, int lastprog)
         {
-            PanelFor.Width += 10;
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -760,6 +758,8 @@ namespace Music_Player_App
 
                 lblPos.Text = player.Position.Days.ToString() + ":" + player.Position.Hours.ToString() + ":" + player.Position.Minutes.ToString() + ":" + player.Position.Seconds.ToString();
                 part = (Convert.ToInt32(player.Position.Days.ToString()) * 24 * 60 * 60) + (Convert.ToInt32(player.Position.Hours.ToString()) * 60 * 60) + (Convert.ToInt32(player.Position.Minutes.ToString()) * 60) + (Convert.ToInt32(player.Position.Seconds.ToString()));
+                int current = (Convert.ToInt32(player.Position.Days.ToString()) * 24 * 60 * 60) + (Convert.ToInt32(player.Position.Hours.ToString()) * 60 * 60) + (Convert.ToInt32(player.Position.Minutes.ToString()) * 60) + (Convert.ToInt32(player.Position.Seconds.ToString()));
+                int progress = (int)((current / full));
                 if (part == full)
                 {
                     if (repeat)
@@ -791,7 +791,7 @@ namespace Music_Player_App
         {
             if (changevolume)
                 volume = rawvol / 100;
-                player.Volume = volume;
+            player.Volume = volume;
         }
         private void btnSettings_Click(object sender, EventArgs e)
         {
@@ -985,17 +985,17 @@ namespace Music_Player_App
                 sr.Close();
                 string ln2;
                 StreamReader sr2 = new StreamReader("favourite.txt");
-                while((ln2 = sr2.ReadLine())!=null)
+                while ((ln2 = sr2.ReadLine()) != null)
                 {
                     int c = Musics.Count(x => x.title == ln2);
-                    if (c>0)
+                    if (c > 0)
                     {
                         Fav.Add(ln2);
                     }
                 }
                 sr2.Close();
                 StreamReader sr3 = new StreamReader("one.txt");
-                while((ln2 = sr3.ReadLine())!=null)
+                while ((ln2 = sr3.ReadLine()) != null)
                 {
                     one.Add(ln2);
                 }
@@ -1037,7 +1037,12 @@ namespace Music_Player_App
 
         private void PanelMove_MouseUp(object sender, MouseEventArgs e)
         {
-            moved = false;  
+            moved = false;
+        }
+
+        private void PanelMove_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

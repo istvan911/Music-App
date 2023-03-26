@@ -1,3 +1,5 @@
+using Music_Player_App.Forms;
+
 namespace Music_Player_App
 {
     internal static class Program
@@ -10,8 +12,9 @@ namespace Music_Player_App
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            //sApplication.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
-            Application.Run(new FormMainWindow());
+            Application.Run(new FormResponsiveMain());
         }
     }
 }
