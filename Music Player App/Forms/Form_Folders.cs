@@ -30,10 +30,10 @@ namespace Music_Player_App
                 {
                     foreach (var item in Folders)
                     {
-                        if(item == fbd.SelectedPath)
+                        if (item == fbd.SelectedPath)
                             have = true;
                     }
-                    if(!have)
+                    if (!have)
                     {
                         lstFolders.Items.Add(fbd.SelectedPath);
                         Folders.Add(fbd.SelectedPath);
@@ -72,7 +72,7 @@ namespace Music_Player_App
 
                 tooltip.SetToolTip(this.iconAddFolder, "Mappa hozzáadása");
                 tooltip.SetToolTip(this.iconDeleteFolder, "Mappa eltávolítása");
-                if(Folders.Count() > 0)
+                if (Folders.Count() > 0)
                 {
                     foreach (var item in Folders)
                     {
@@ -84,11 +84,11 @@ namespace Music_Player_App
                     MessageBox.Show("Nincs megjeleníthető mappa! Kérem adjon hozzá egyet!");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
         private void iconAddFolder_MouseLeave(object sender, EventArgs e)
         {
@@ -118,7 +118,7 @@ namespace Music_Player_App
         {
             try
             {
-                if(Folders.Count > 0)
+                if (Folders.Count > 0)
                 {
                     DialogResult result = MessageBox.Show("Kijelölte a törölni kívánt elemet?", "Visszajelzés kérése", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
@@ -155,10 +155,11 @@ namespace Music_Player_App
                     MessageBox.Show("Lista nem tartalmaz törölhető elemeket!");
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show(ex.Message + "A törléshez jelöljön ki egy listamezőt!");
             }
         }
+
     }
 }

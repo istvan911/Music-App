@@ -357,6 +357,7 @@ namespace Music_Player_App.Forms
             progBar.Margin = new Padding(0);
             progBar.Name = "progBar";
             progBar.Size = new Size(750, 15);
+            progBar.Style = ProgressBarStyle.Continuous;
             progBar.TabIndex = 15;
             // 
             // trackBar1

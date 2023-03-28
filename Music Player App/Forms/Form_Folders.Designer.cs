@@ -28,85 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstFolders = new System.Windows.Forms.ListBox();
-            this.iconAddFolder = new FontAwesome.Sharp.IconPictureBox();
-            this.iconDeleteFolder = new FontAwesome.Sharp.IconPictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.iconAddFolder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconDeleteFolder)).BeginInit();
-            this.SuspendLayout();
+            tlp1 = new TableLayoutPanel();
+            lstFolders = new ListBox();
+            P1 = new Panel();
+            iconDeleteFolder = new FontAwesome.Sharp.IconPictureBox();
+            iconAddFolder = new FontAwesome.Sharp.IconPictureBox();
+            tlp1.SuspendLayout();
+            P1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconDeleteFolder).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconAddFolder).BeginInit();
+            SuspendLayout();
+            // 
+            // tlp1
+            // 
+            tlp1.ColumnCount = 1;
+            tlp1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlp1.Controls.Add(lstFolders, 0, 1);
+            tlp1.Controls.Add(P1, 0, 0);
+            tlp1.Dock = DockStyle.Fill;
+            tlp1.Location = new Point(5, 5);
+            tlp1.Name = "tlp1";
+            tlp1.RowCount = 2;
+            tlp1.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            tlp1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlp1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlp1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlp1.Size = new Size(1020, 510);
+            tlp1.TabIndex = 0;
             // 
             // lstFolders
             // 
-            this.lstFolders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.lstFolders.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstFolders.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lstFolders.ForeColor = System.Drawing.Color.White;
-            this.lstFolders.FormattingEnabled = true;
-            this.lstFolders.ItemHeight = 37;
-            this.lstFolders.Location = new System.Drawing.Point(5, 71);
-            this.lstFolders.Name = "lstFolders";
-            this.lstFolders.Size = new System.Drawing.Size(1020, 444);
-            this.lstFolders.TabIndex = 0;
+            lstFolders.BackColor = Color.FromArgb(30, 30, 70);
+            lstFolders.BorderStyle = BorderStyle.None;
+            lstFolders.Dock = DockStyle.Fill;
+            lstFolders.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lstFolders.ForeColor = Color.White;
+            lstFolders.FormattingEnabled = true;
+            lstFolders.ItemHeight = 28;
+            lstFolders.Location = new Point(3, 63);
+            lstFolders.Name = "lstFolders";
+            lstFolders.Size = new Size(1014, 444);
+            lstFolders.TabIndex = 2;
             // 
-            // iconAddFolder
+            // P1
             // 
-            this.iconAddFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
-            this.iconAddFolder.IconChar = FontAwesome.Sharp.IconChar.FolderPlus;
-            this.iconAddFolder.IconColor = System.Drawing.Color.White;
-            this.iconAddFolder.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconAddFolder.IconSize = 55;
-            this.iconAddFolder.Location = new System.Drawing.Point(970, 8);
-            this.iconAddFolder.Name = "iconAddFolder";
-            this.iconAddFolder.Size = new System.Drawing.Size(55, 55);
-            this.iconAddFolder.TabIndex = 1;
-            this.iconAddFolder.TabStop = false;
-            this.iconAddFolder.Click += new System.EventHandler(this.iconPictureBox1_Click);
-            this.iconAddFolder.MouseEnter += new System.EventHandler(this.iconAddFolder_MouseEnter);
-            this.iconAddFolder.MouseLeave += new System.EventHandler(this.iconAddFolder_MouseLeave);
+            P1.Controls.Add(iconDeleteFolder);
+            P1.Controls.Add(iconAddFolder);
+            P1.Dock = DockStyle.Fill;
+            P1.Location = new Point(3, 3);
+            P1.Name = "P1";
+            P1.Size = new Size(1014, 54);
+            P1.TabIndex = 0;
             // 
             // iconDeleteFolder
             // 
-            this.iconDeleteFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(50)))));
-            this.iconDeleteFolder.IconChar = FontAwesome.Sharp.IconChar.FolderMinus;
-            this.iconDeleteFolder.IconColor = System.Drawing.Color.White;
-            this.iconDeleteFolder.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconDeleteFolder.IconSize = 55;
-            this.iconDeleteFolder.Location = new System.Drawing.Point(906, 8);
-            this.iconDeleteFolder.Name = "iconDeleteFolder";
-            this.iconDeleteFolder.Size = new System.Drawing.Size(55, 55);
-            this.iconDeleteFolder.TabIndex = 2;
-            this.iconDeleteFolder.TabStop = false;
-            this.iconDeleteFolder.Click += new System.EventHandler(this.iconDeleteFolder_Click);
-            this.iconDeleteFolder.MouseEnter += new System.EventHandler(this.iconDeleteFolder_MouseEnter);
-            this.iconDeleteFolder.MouseLeave += new System.EventHandler(this.iconDeleteFolder_MouseLeave);
+            iconDeleteFolder.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            iconDeleteFolder.BackColor = Color.FromArgb(30, 30, 50);
+            iconDeleteFolder.IconChar = FontAwesome.Sharp.IconChar.FolderMinus;
+            iconDeleteFolder.IconColor = Color.White;
+            iconDeleteFolder.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconDeleteFolder.IconSize = 45;
+            iconDeleteFolder.Location = new Point(966, 3);
+            iconDeleteFolder.Name = "iconDeleteFolder";
+            iconDeleteFolder.Size = new Size(45, 45);
+            iconDeleteFolder.TabIndex = 8;
+            iconDeleteFolder.TabStop = false;
+            iconDeleteFolder.Click += iconDeleteFolder_Click;
+            iconDeleteFolder.MouseEnter += iconDeleteFolder_MouseEnter;
+            iconDeleteFolder.MouseLeave += iconDeleteFolder_MouseLeave;
+            // 
+            // iconAddFolder
+            // 
+            iconAddFolder.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            iconAddFolder.BackColor = Color.FromArgb(30, 30, 50);
+            iconAddFolder.IconChar = FontAwesome.Sharp.IconChar.FolderPlus;
+            iconAddFolder.IconColor = Color.White;
+            iconAddFolder.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconAddFolder.IconSize = 45;
+            iconAddFolder.Location = new Point(915, 3);
+            iconAddFolder.Name = "iconAddFolder";
+            iconAddFolder.Size = new Size(45, 45);
+            iconAddFolder.TabIndex = 7;
+            iconAddFolder.TabStop = false;
+            iconAddFolder.Click += iconPictureBox1_Click;
+            iconAddFolder.MouseEnter += iconAddFolder_MouseEnter;
+            iconAddFolder.MouseLeave += iconAddFolder_MouseLeave;
             // 
             // Form_Folders
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(1030, 520);
-            this.Controls.Add(this.iconDeleteFolder);
-            this.Controls.Add(this.iconAddFolder);
-            this.Controls.Add(this.lstFolders);
-            this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6);
-            this.Name = "Form_Folders";
-            this.Padding = new System.Windows.Forms.Padding(5);
-            this.Text = "Form_Folders";
-            this.Load += new System.EventHandler(this.Form_Folders_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.iconAddFolder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconDeleteFolder)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(15F, 37F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(30, 30, 70);
+            ClientSize = new Size(1030, 520);
+            Controls.Add(tlp1);
+            Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            ForeColor = Color.White;
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(6);
+            Name = "Form_Folders";
+            Padding = new Padding(5);
+            Text = "Form_Folders";
+            Load += Form_Folders_Load;
+            tlp1.ResumeLayout(false);
+            P1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)iconDeleteFolder).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconAddFolder).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
-        private ListBox lstFolders;
-        private FontAwesome.Sharp.IconPictureBox iconAddFolder;
+        private TableLayoutPanel tlp1;
+        private Panel P1;
         private FontAwesome.Sharp.IconPictureBox iconDeleteFolder;
+        private FontAwesome.Sharp.IconPictureBox iconAddFolder;
+        private ListBox lstFolders;
     }
 }

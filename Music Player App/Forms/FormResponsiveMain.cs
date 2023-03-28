@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Runtime.InteropServices;
+
 namespace Music_Player_App.Forms
 {
     public partial class FormResponsiveMain : Form
@@ -769,9 +771,6 @@ namespace Music_Player_App.Forms
             IconMinimize.ForeColor = Color.Yellow;
         }
 
-        private void ASD(int prog, int lastprog)
-        {
-        }
         private void Timer_Tick(object sender, EventArgs e)
         {
 
@@ -780,8 +779,7 @@ namespace Music_Player_App.Forms
                 lblPos.Text = player.Position.Days.ToString() + ":" + player.Position.Hours.ToString() + ":" + player.Position.Minutes.ToString() + ":" + player.Position.Seconds.ToString();
                 part = (Convert.ToInt32(player.Position.Days.ToString()) * 24 * 60 * 60) + (Convert.ToInt32(player.Position.Hours.ToString()) * 60 * 60) + (Convert.ToInt32(player.Position.Minutes.ToString()) * 60) + (Convert.ToInt32(player.Position.Seconds.ToString()));
                 int current = (Convert.ToInt32(player.Position.Days.ToString()) * 24 * 60 * 60) + (Convert.ToInt32(player.Position.Hours.ToString()) * 60 * 60) + (Convert.ToInt32(player.Position.Minutes.ToString()) * 60) + (Convert.ToInt32(player.Position.Seconds.ToString()));
-
-                //int progress = (int)((current / full));
+                progBar.ForeColor = Color.Red;
                 progBar.Value = current;
                 if (part == full)
                 {
